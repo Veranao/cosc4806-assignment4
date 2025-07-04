@@ -1,16 +1,17 @@
 <?php require_once 'app/views/templates/header.php' ?>
 
 <?php
-function check_completed($reminderObj)
+    function check_completed($reminderObj)
     {
-    return(is_null($reminderObj["completed_at"]) == 0);
+        return(is_null($reminderObj["completed_at"]) == 0);
     }
-
-function check_not_completed($reminderObj)
-{
-return(is_null($reminderObj["completed_at"]) == 1);
-}
+    
+    function check_not_completed($reminderObj)
+    {
+        return(is_null($reminderObj["completed_at"]) == 1);
+    }
 ?>
+
 <div class="container">
     <div class="page-header" id="banner">
         <div class="row pt-3">
