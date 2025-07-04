@@ -1,5 +1,5 @@
 <?php require_once 'app/views/templates/header.php' ?>
-<div class="container">
+<div class="container py-3">
     <div class="page-header" id="banner">
         <div class="row pt-3">
             <div class="col-lg-12">
@@ -12,10 +12,12 @@
     <div class="row">
         <div class="col-lg-12">
                <form action="/createreminder/create" method="post">
-                   <input type="submit" name="subject"  />
-                   <button class="btn btn-primary">Create reminder</button>
+                   <label for="subject">Subject</label>
+                   <input type="text" class="form-control" name="subject"  />
+                   <button class="btn btn-primary mt-2" type="submit">Create reminder</button>
                </form>
         </div>
     </div>
+</div>
 
     <?php require_once 'app/views/templates/footer.php' ?>

@@ -19,6 +19,13 @@ class Reminder {
       // do update statement here
     }
 
+    public function create($subject) {
+      $db = db_connect();
+      $statement = $db->prepare("INSERT INTO reminders (subject) VALUES (:subject)");
+      $statement->bindValue(':subject', $subject);
+      $statement->execute();
+    }
+
     public function delete ($id) {
       $db = db_connect();
       $statement = $db->prepare("DELETE FROM reminders WHERE id = :id");

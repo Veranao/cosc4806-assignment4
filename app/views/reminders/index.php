@@ -30,7 +30,9 @@
                         ?>
                     </tbody>
                 </table>
-            <button class="btn btn-primary">New reminder</button>
+                <a href="/createreminder">
+                    <button class="btn btn-primary">New reminder</button>
+                </a>
         </div>
     </div>
 

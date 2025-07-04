@@ -1,6 +1,6 @@
 <?php
 
-class CreateReminders extends Controller {
+class CreateReminder extends Controller {
 
     public function index() {		
       $this->view('createreminder/index');
@@ -9,13 +9,11 @@ class CreateReminders extends Controller {
 
     public function create() {
       if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-          $reminder_id = $_POST['reminder_id'];
-          print_r($reminder_id);
-
+          $subject = $_POST['subject'];
           $reminder = $this->model('Reminder');
-          $reminder->delete($reminder_id);
+          $reminder->create($subject);
 
-          $_SESSION['flash'] = "Reminder deleted successfully.";
+          $_SESSION['flash'] = "Reminder added successfully.";
 
           header("Location: /reminders");
           exit;
