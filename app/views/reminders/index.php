@@ -18,14 +18,32 @@
                             <th>Subject</th>
                             <th>Created</th>
                             <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                             foreach ($data['reminders'] as $reminder) {
-                                echo "<form action='/reminders/delete' method='post'>";
-                                echo "<tr><td>" . $reminder['id'] . "</td><td>" . $reminder['subject'] . "</td><td>" . $reminder['created_at'] . "<td><button class='btn btn-sm btn-outline-danger' type='submit' name='reminder_id' value='" . $reminder['id']  ."'>x</button></td></tr>";
-                                echo "</form>";
+                               
+                                echo "<tr>";
+                                echo "<td>" . $reminder['id'] . "</td>";
+                                echo "<td>" . $reminder['subject'] . "</td>";
+                                echo "<td>" . $reminder['created_at'] . "</td>";
+                                
+                                echo "<td>";
+                                     echo "<form action='/reminders/edit' method='post'>";
+                                    echo "<button class='btn btn-sm btn-outline-primary' type='submit' name='reminder_id' value='" . $reminder['id']  ."'>Edit</button>";
+                                    echo "</form>";
+                                echo "</td>";
+
+                                echo "<td>";
+                                    echo "<form action='/reminders/delete' method='post'>";
+                                    echo "<button class='btn btn-sm btn-outline-danger' type='submit' name='reminder_id' value='" . $reminder['id']  ."'>x</button>";
+                                    echo "</form>";
+                                echo "</td>";
+                                
+                                echo "</tr>";
+                                
                             }
                         ?>
                     </tbody>

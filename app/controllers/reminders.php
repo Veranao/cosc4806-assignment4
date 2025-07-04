@@ -13,7 +13,6 @@ class Reminders extends Controller {
     public function delete() {
       if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           $reminder_id = $_POST['reminder_id'];
-          print_r($reminder_id);
 
           $reminder = $this->model('Reminder');
           $reminder->delete($reminder_id);
@@ -24,5 +23,13 @@ class Reminders extends Controller {
           exit;
       }
     }
+
+  public function edit() {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $reminder_id = $_POST['reminder_id'];
+        $this->view('updatereminder/index', ['reminder_id' => $reminder_id ]);
+        die;
+    }
+  }
 
 }
