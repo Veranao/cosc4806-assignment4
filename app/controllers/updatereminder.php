@@ -9,11 +9,12 @@ class UpdateReminder extends Controller {
 
     public function update() {
       if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+          $reminder_id = $_POST['reminder_id'];
           $subject = $_POST['subject'];
           $reminder = $this->model('Reminder');
-          $reminder->create($subject);
+          $reminder->update_reminder($reminder_id, $subject);
 
-          $_SESSION['flash'] = "Reminder added successfully.";
+          $_SESSION['flash'] = "Reminder updated successfully.";
 
           header("Location: /reminders");
           exit;

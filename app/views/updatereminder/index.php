@@ -11,10 +11,11 @@
 
     <div class="row">
         <div class="col-lg-12">
-               <form action="/createreminder/create" method="post">
+                <p>Updating reminder <?= $data['reminder']['id']  ?></p>
+               <form action="/updatereminder/update" method="post">
                    <label for="subject">Subject</label>
-                   <input type="text" class="form-control" name="subject"  />
-                   <button class="btn btn-primary mt-2" type="submit">Save</button>
+                   <input type="text" class="form-control" name="subject" value="<?= $data['reminder']['subject'] ?> "/>
+                   <button class="btn btn-primary mt-2" type="submit" name="reminder_id" value="<?= $data['reminder']['id'] ?>">Save</button>
                </form>
         </div>
     </div>

@@ -14,9 +14,22 @@ class Reminder {
       return $rows;
     }
 
-    public function update_reminder () {
+    public function get ($id) {
       $db = db_connect();
-      // do update statement here
+      $statement = $db->prepare("select * from reminders where id = :id;");
+      $statement->bindValue(':id', $id);
+      $statement->execute();
+      $rows = $statement->fetch(PDO::FETCH_ASSOC);
+
+      return $rows;
+    }
+
+    public function update_reminder ($id, $subject) {
+      $db = db_connect();
+      $statement = $db->prepare("UPDATE reminders SET subject = :subject WHERE id = :id");
+      $statement->bindValue(':subject', $subject);
+      $statement->bindValue(':id', $id);
+      $statement->execute();
     }
 
     public function create($subject) {

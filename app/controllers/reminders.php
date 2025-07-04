@@ -25,9 +25,14 @@ class Reminders extends Controller {
     }
 
   public function edit() {
+    
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $reminder_id = $_POST['reminder_id'];
-        $this->view('updatereminder/index', ['reminder_id' => $reminder_id ]);
+
+        $reminderModel = $this->model('Reminder');
+        $reminder = $reminderModel->get($reminder_id);
+      
+        $this->view('updatereminder/index', ['reminder' => $reminder ]);
         die;
     }
   }
