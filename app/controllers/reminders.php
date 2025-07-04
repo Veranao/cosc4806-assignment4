@@ -24,6 +24,20 @@ class Reminders extends Controller {
       }
     }
 
+  public function mark_complete() {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $reminder_id = $_POST['reminder_id'];
+
+        $reminder = $this->model('Reminder');
+        $reminder->mark_complete($reminder_id);
+
+        $_SESSION['flash'] = "Task completed.";
+
+        header("Location: /reminders");
+        exit;
+    }
+  }
+
   public function edit() {
     
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {

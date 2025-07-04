@@ -48,5 +48,13 @@ class Reminder {
       $statement->execute();
       
     }
+
+    public function mark_complete ($id) {
+      $db = db_connect();
+      $statement = $db->prepare("UPDATE reminders SET completed_at = NOW(3) WHERE id = :id");
+      $statement->bindValue(':id', $id);
+      $statement->execute();
+  
+    }
 }
 ?>
