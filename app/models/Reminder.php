@@ -18,3 +18,5 @@ class Reminder {
     $db = db_connect();
     // do update statement here
   }
+}
+?>
