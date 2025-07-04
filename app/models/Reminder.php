@@ -8,7 +8,7 @@ class Reminder {
 
     public function get_all_reminders () {
       $db = db_connect();
-      $statement = $db->prepare("select * from reminders where user_id = :user_id;");
+      $statement = $db->prepare("select * from reminders where user_id = :user_id AND deleted_at IS NULL;");
       $statement->bindValue(':user_id', $_SESSION['user_id']);
       $statement->execute();
       $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -43,7 +43,7 @@ class Reminder {
 
     public function delete ($id) {
       $db = db_connect();
-      $statement = $db->prepare("DELETE FROM reminders WHERE id = :id");
+      $statement = $db->prepare("UPDATE reminders SET deleted_at = NOW(3) WHERE id = :id");
       $statement->bindValue(':id', $id);
       $statement->execute();
       
